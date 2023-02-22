@@ -1,14 +1,23 @@
-
+import { getSongID } from "@/services";
 
 const Search = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        console.log(event.target.song.value);
+        // console.log(event.target.song.value);
 
-        event.target.reset()
+        getSongID(event.target.song.value)
+        .then((result)=> console.log(result))
+        
+        
+
+        // event.target.reset()
     }
+
+
+
+
 
     return (
         <form onSubmit={handleSubmit}>
