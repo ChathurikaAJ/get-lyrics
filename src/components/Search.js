@@ -1,6 +1,7 @@
 import { getLyrics, getSongID } from "@/services";
 import { useState } from "react";
 import Lyrics from "./Lyrics";
+import Link from "next/link";
 
 
 const Search = () => {
