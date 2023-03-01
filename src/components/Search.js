@@ -1,7 +1,9 @@
 import { getLyrics, getSongID } from "@/services";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Lyrics from "./Lyrics";
 import Link from "next/link";
+import { useRouter } from 'next/router'
+
 
 
 const Search = () => {
@@ -60,6 +62,8 @@ const Search = () => {
             setLyrics(lyrics)
         }
     }
+
+    const router = useRouter()
 
 
 
