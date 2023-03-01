@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Lyrics from "./Lyrics";
 import Link from "next/link";
 import { useRouter } from 'next/router'
-
+import Loading from "./Loading";
 
 
 const Search = () => {
@@ -16,23 +16,25 @@ const Search = () => {
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
     const [date, setDate] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const handleSubmit = (event) => {
         setDisplayLyrics(false)
-        setDisplayList(true)
+        
         event.preventDefault();
         textDisplay()
 
         getSongID(event.target.song.value)
         .then((result)=>{
             setMatches(result)
+            setDisplayList(true)
         })
         
         event.target.reset()
     }
 
     const handleSelect = (result)=> {
-        setDisplayLyrics(true)
+        setLoading(true)
         setDisplayList(false)
 
         setArtist(result.artist_names)
@@ -43,6 +45,8 @@ const Search = () => {
         getLyrics(result.id)
             .then((result) => {
                 textDisplay(result.lyrics.lyrics.body.plain)
+                setLoading(false)
+                setDisplayLyrics(true)
             })
     }
 
@@ -76,6 +80,8 @@ const Search = () => {
                 <p className="mb-2 hover:cursor-pointer hover:text-[#eb5286]" key={song.result.id} onClick={()=> handleSelect(song.result)}>{song.result.full_title}</p>
                
             ))}
+
+            {loading && <Loading />}
 
             {displayLyrics && <Lyrics lyrics={lyrics} artist={artist} title={title} image={image} date={date} />}
         </div>

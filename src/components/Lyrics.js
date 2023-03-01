@@ -17,7 +17,7 @@ const Lyrics = ({ lyrics, artist, title, image, date }) => {
 
         </Image>
       </div>
-      <p className="css-fix">{lyrics}</p>
+      <p className="css-fix p-5">{lyrics}</p>
     </div>
   )
 }
