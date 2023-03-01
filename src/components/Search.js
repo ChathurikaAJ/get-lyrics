@@ -73,7 +73,7 @@ const Search = () => {
                 <input className="text-center text-sky-400 text-lg border-solid border-b-2 border-[#121640]  mt-10 mb-10 p-2 focus:outline-none" name="song" placeholder="Enter the song name"></input>
             </form>
             {displayList && matches.map((song) => (
-                <p key={song.result.id} onClick={()=> handleSelect(song.result)}>{song.result.full_title}</p>
+                <p className="mb-2 hover:cursor-pointer hover:text-[#eb5286]" key={song.result.id} onClick={()=> handleSelect(song.result)}>{song.result.full_title}</p>
                
             ))}
 
