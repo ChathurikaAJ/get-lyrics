@@ -8,7 +8,7 @@ export const getSongID = async (req)=> {
     const options = {
         method: 'GET',
         url: 'https://genius-song-lyrics1.p.rapidapi.com/search/',
-        params: {q: req, per_page: '5 ', page: '1'},
+        params: {q: req, per_page: '10 ', page: '1'},
         headers: {
           'X-RapidAPI-Key': rapidAPI,
           'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
